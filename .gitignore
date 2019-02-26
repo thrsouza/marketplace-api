@@ -1,0 +1,7 @@
+# FOLDERS
+.vscode/
+node_modules/
+tmp/
+
+# FILES
+yarn-error.log
