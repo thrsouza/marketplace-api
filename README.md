@@ -1,4 +1,4 @@
-### Marketplace Api - GoNode Challenge #3
+## Marketplace Api - GoNode Challenge #3
 
 This project was created along the third module of Nodejs (GoStack - Rocketseat).
 
