@@ -11,8 +11,8 @@ const validators = require('./app/validators')
 
 routes.post(
   '/token',
-  validate(validators.Auth),
-  handle(controllers.AuthController.store)
+  validate(validators.Session),
+  handle(controllers.SessionController.store)
 )
 
 routes.post(
@@ -44,5 +44,6 @@ routes.post(
   validate(validators.Purchase),
   handle(controllers.PurchaseController.store)
 )
+routes.put('/api/purchases/:id', handle(controllers.ApproveController.update))
 
 module.exports = routes

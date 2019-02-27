@@ -19,19 +19,14 @@ const AdSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+  purchasedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Ad'
   },
   createdAt: {
     type: Date,
     default: Date.now
   }
-})
-
-AdSchema.pre('save', async function (next) {
-  this.updatedAt = Date.now()
-  next()
 })
 
 AdSchema.plugin(mongoosePaginate)

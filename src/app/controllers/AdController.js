@@ -20,19 +20,22 @@ class AdController {
       filters.title = new RegExp(req.query.title, 'i')
     }
 
-    const ads = await Ad.paginate(filters, {
-      page: req.query.page || 1,
-      limit: 20,
-      populate: ['author'],
-      sort: '-createdAt'
-    })
+    const ads = await Ad.paginate(
+      { ...filters, purchasedBy: null },
+      {
+        page: req.query.page || 1,
+        limit: 20,
+        populate: ['author'],
+        sort: '-createdAt'
+      }
+    )
     return res.status(200).json(ads)
   }
 
   async show (req, res) {
-    const ad = await Ad.findById(req.params.id)
+    const ad = await Ad.findById(req.params.id).populate('author')
 
-    if (!ad) {
+    if (!ad || ad.purchasedBy) {
       return res.status(404).send()
     }
 

@@ -19,10 +19,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now
-  },
   createdAt: {
     type: Date,
     default: Date.now
@@ -30,8 +26,6 @@ const UserSchema = new mongoose.Schema({
 })
 
 UserSchema.pre('save', async function (next) {
-  this.updatedAt = Date.now()
-
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 8)
   }

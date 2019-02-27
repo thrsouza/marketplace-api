@@ -1,6 +1,6 @@
 const User = require('../models/User')
 
-class AuthController {
+class SessionController {
   async store (req, res) {
     const { email, password } = req.body
 
@@ -14,4 +14,4 @@ class AuthController {
   }
 }
 
-module.exports = new AuthController()
+module.exports = new SessionController()
